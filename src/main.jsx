@@ -43,6 +43,18 @@ const photos = {
   tools: asset("atelier-tools-clean.png"),
 };
 
+const photoDimensions = {
+  [photos.blackGold]: { width: 1080, height: 1425 },
+  [photos.weddingBand]: { width: 723, height: 960 },
+  [photos.braidedBand]: { width: 897, height: 960 },
+  [photos.amberRing]: { width: 1220, height: 1627 },
+  [photos.workshop]: { width: 1063, height: 1141 },
+  [photos.testimonial]: { width: 1211, height: 1131 },
+  [photos.goldSet]: { width: 1219, height: 1633 },
+  [photos.tableWork]: { width: 718, height: 960 },
+  [photos.tools]: { width: 1652, height: 952 },
+};
+
 const navItems = [
   ["בית", "top"],
   ["אודות", "about"],
@@ -302,8 +314,8 @@ function App() {
         <button className="icon-btn mobile-menu" onClick={() => setMenuOpen(true)} aria-label="פתיחת תפריט">
           <Menu size={22} />
         </button>
-        <button className="brand" onClick={() => goTo("top")} aria-label="AVNER MESIKA עמוד הבית">
-          <span className="monogram">AM</span>
+        <button className="brand" onClick={() => goTo("top")}>
+          <span className="monogram" aria-hidden="true">AM</span>
           <span className="brand-text">
             <span className="brand-name">AVNER MESIKA</span>
             <small>Jewelry Artist · Handcrafted Fine Jewelry</small>
@@ -344,7 +356,13 @@ function App() {
       <main id="top">
         <section className="hero">
           <div className="hero-image">
-            <img src={photos.amberRing} alt="טבעת אבן בעבודת יד של אבנר מסיקה" />
+            <img
+              src={photos.amberRing}
+              alt="טבעת אבן בעבודת יד של אבנר מסיקה"
+              width={photoDimensions[photos.amberRing].width}
+              height={photoDimensions[photos.amberRing].height}
+              fetchPriority="high"
+            />
           </div>
           <div className="hero-content reveal">
             <span className="eyebrow">צורף אומן · עבודת יד · עיצוב אישי · שירות אישי</span>
@@ -414,7 +432,15 @@ function App() {
                 className={index === 0 ? "service-card feature reveal" : "service-card reveal"}
                 key={title}
               >
-                {index === 0 && <img src={src} alt={`${title} של אבנר מסיקה`} loading="lazy" />}
+                {index === 0 && (
+                  <img
+                    src={src}
+                    alt={`${title} של אבנר מסיקה`}
+                    loading="lazy"
+                    width={photoDimensions[src].width}
+                    height={photoDimensions[src].height}
+                  />
+                )}
                 <div>
                   <Gem size={22} />
                   <h3>{title}</h3>
@@ -426,7 +452,13 @@ function App() {
         </section>
 
         <section className="philosophy">
-          <img src={photos.tools} alt="שולחן עבודה יוקרתי של צורף עם כלי צורפות וטבעת זהב" loading="lazy" />
+          <img
+            src={photos.tools}
+            alt="שולחן עבודה יוקרתי של צורף עם כלי צורפות וטבעת זהב"
+            loading="lazy"
+            width={photoDimensions[photos.tools].width}
+            height={photoDimensions[photos.tools].height}
+          />
           <div>
             <span className="eyebrow">כל תכשיט מספר סיפור</span>
             <h2>תכשיט טוב הוא לא מוצר מדף. הוא זיכרון, רגע, רגש ונוכחות.</h2>
@@ -439,7 +471,13 @@ function App() {
 
         <section className="section custom" id="custom-rings">
           <div className="custom-media">
-            <img src={photos.amberRing} alt="טבעת אירוסין או טבעת אבן בעיצוב אישי בעבודת יד" loading="lazy" />
+            <img
+              src={photos.amberRing}
+              alt="טבעת אירוסין או טבעת אבן בעיצוב אישי בעבודת יד"
+              loading="lazy"
+              width={photoDimensions[photos.amberRing].width}
+              height={photoDimensions[photos.amberRing].height}
+            />
           </div>
           <div className="custom-copy">
             <span className="eyebrow">יצירה אחת ויחידה שנבנית במיוחד בשבילכם</span>
@@ -481,8 +519,22 @@ function App() {
             <a className="text-link" href={whatsappHref}>שלחו תמונה לבדיקה ראשונית</a>
           </div>
           <div className="compare" style={{ "--position": `${slider}%` }}>
-            <img className="after" src={photos.braidedBand} alt="טבעת לאחר חידוש וגימור" loading="lazy" />
-            <img className="before" src={photos.weddingBand} alt="טבעת לפני עבודת חידוש" loading="lazy" />
+            <img
+              className="after"
+              src={photos.braidedBand}
+              alt="טבעת לאחר חידוש וגימור"
+              loading="lazy"
+              width={photoDimensions[photos.braidedBand].width}
+              height={photoDimensions[photos.braidedBand].height}
+            />
+            <img
+              className="before"
+              src={photos.weddingBand}
+              alt="טבעת לפני עבודת חידוש"
+              loading="lazy"
+              width={photoDimensions[photos.weddingBand].width}
+              height={photoDimensions[photos.weddingBand].height}
+            />
             <input
               type="range"
               min="0"
@@ -506,7 +558,13 @@ function App() {
                 key={category}
                 onClick={() => setLightbox(index)}
               >
-                <img src={src} alt={`${category} - עבודת יד של אבנר מסיקה`} loading="lazy" />
+                <img
+                  src={src}
+                  alt={`${category} - עבודת יד של אבנר מסיקה`}
+                  loading="lazy"
+                  width={photoDimensions[src].width}
+                  height={photoDimensions[src].height}
+                />
                 <span>{category}</span>
               </button>
             ))}
@@ -522,9 +580,9 @@ function App() {
             {testimonials.map((item) => (
               <article className="testimonial-card reveal" key={item.name}>
                 <span className="quote-mark" aria-hidden="true">“</span>
-                <div className="stars" aria-label="דירוג חמישה כוכבים">
+                <div className="stars" role="img" aria-label="דירוג חמישה כוכבים">
                   {Array.from({ length: 5 }).map((_, index) => (
-                    <Star key={index} size={15} fill="currentColor" />
+                    <Star key={index} size={15} fill="currentColor" aria-hidden="true" />
                   ))}
                 </div>
                 <p>{item.text}</p>
@@ -549,8 +607,20 @@ function App() {
             </p>
           </div>
           <div className="story-media">
-            <img src={photos.workshop} alt="עבודת צורפות ותכשיטים בסטודיו של אבנר מסיקה" loading="lazy" />
-            <img src={photos.tableWork} alt="תכשיטים על שולחן עבודה בתהליך צורפות" loading="lazy" />
+            <img
+              src={photos.workshop}
+              alt="עבודת צורפות ותכשיטים בסטודיו של אבנר מסיקה"
+              loading="lazy"
+              width={photoDimensions[photos.workshop].width}
+              height={photoDimensions[photos.workshop].height}
+            />
+            <img
+              src={photos.tableWork}
+              alt="תכשיטים על שולחן עבודה בתהליך צורפות"
+              loading="lazy"
+              width={photoDimensions[photos.tableWork].width}
+              height={photoDimensions[photos.tableWork].height}
+            />
           </div>
         </section>
 
@@ -677,7 +747,12 @@ function App() {
           <button className="light-arrow left" onClick={() => setLightbox((lightbox + gallery.length - 1) % gallery.length)} aria-label="תמונה קודמת">
             <ChevronLeft size={34} />
           </button>
-          <img src={gallery[lightbox][1]} alt={gallery[lightbox][0]} />
+          <img
+            src={gallery[lightbox][1]}
+            alt={gallery[lightbox][0]}
+            width={photoDimensions[gallery[lightbox][1]].width}
+            height={photoDimensions[gallery[lightbox][1]].height}
+          />
           <span>{gallery[lightbox][0]}</span>
           <button className="light-arrow right" onClick={() => setLightbox((lightbox + 1) % gallery.length)} aria-label="תמונה הבאה">
             <ChevronRight size={34} />
