@@ -349,7 +349,7 @@ function App() {
           </div>
           <div className="trust-grid">
             {trustItems.map(([title, text, Icon]) => (
-              <article className="trust-card" key={title}>
+              <article className="trust-card reveal" key={title}>
                 <Icon size={30} />
                 <h3>{title}</h3>
                 <p>{text}</p>
@@ -369,7 +369,10 @@ function App() {
           </div>
           <div className="service-bento">
             {services.map(([title, text, src], index) => (
-              <article className={index === 0 ? "service-card feature" : "service-card"} key={title}>
+              <article
+                className={index === 0 ? "service-card feature reveal" : "service-card reveal"}
+                key={title}
+              >
                 {index === 0 && <img src={src} alt={`${title} של אבנר מסיקה`} loading="lazy" />}
                 <div>
                   <Gem size={22} />
@@ -417,7 +420,7 @@ function App() {
           </div>
           <div className="timeline">
             {process.map(([num, title, text]) => (
-              <article key={title}>
+              <article className="reveal" key={title}>
                 <span>{num}</span>
                 <h3>{title}</h3>
                 <p>{text}</p>
@@ -457,7 +460,11 @@ function App() {
           </div>
           <div className="masonry">
             {gallery.map(([category, src], index) => (
-              <button className={`gallery-item item-${(index % 5) + 1}`} key={category} onClick={() => setLightbox(index)}>
+              <button
+                className={`gallery-item item-${(index % 5) + 1} reveal`}
+                key={category}
+                onClick={() => setLightbox(index)}
+              >
                 <img src={src} alt={`${category} - עבודת יד של אבנר מסיקה`} loading="lazy" />
                 <span>{category}</span>
               </button>
@@ -472,14 +479,20 @@ function App() {
           </div>
           <div className="testimonial-grid">
             {testimonials.map((item) => (
-              <article className="testimonial-card" key={item.name}>
+              <article className="testimonial-card reveal" key={item.name}>
+                <span className="quote-mark" aria-hidden="true">“</span>
                 <div className="stars" aria-label="דירוג חמישה כוכבים">
                   {Array.from({ length: 5 }).map((_, index) => (
                     <Star key={index} size={15} fill="currentColor" />
                   ))}
                 </div>
-                <p>“{item.text}”</p>
-                <strong>{item.name}</strong>
+                <p>{item.text}</p>
+                <div className="testimonial-author">
+                  <span className="avatar-monogram" aria-hidden="true">
+                    {item.name.trim().charAt(0)}
+                  </span>
+                  <strong>{item.name}</strong>
+                </div>
               </article>
             ))}
           </div>
