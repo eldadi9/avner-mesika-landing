@@ -232,7 +232,7 @@ function App() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name: data.get("name"),
+          name: `${data.get("firstName")} ${data.get("lastName")}`.trim(),
           phone: data.get("phone"),
           email: data.get("email"),
           date: data.get("date"),
@@ -472,8 +472,12 @@ function App() {
           </div>
           <form className="booking-form" onSubmit={submitAppointment}>
             <label>
-              שם מלא
-              <input name="name" required autoComplete="name" />
+              שם פרטי
+              <input name="firstName" required autoComplete="given-name" />
+            </label>
+            <label>
+              שם משפחה
+              <input name="lastName" required autoComplete="family-name" />
             </label>
             <label>
               טלפון

@@ -768,6 +768,7 @@ textarea {
   padding: 14px 0;
   color: var(--surface);
   background: transparent;
+  font-size: 16px;
   outline: 0;
 }
 
