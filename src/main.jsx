@@ -242,8 +242,12 @@ function App() {
   useScrollReveal();
 
   const goTo = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     setMenuOpen(false);
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
   };
 
   const submitAppointment = async (event) => {
@@ -285,17 +289,29 @@ function App() {
           <span className="brand-name">AVNER MESIKA</span>
           <small>Jewelry Artist · Handcrafted Fine Jewelry</small>
         </button>
+        {menuOpen && (
+          <button
+            className="nav-backdrop"
+            onClick={() => setMenuOpen(false)}
+            aria-label="סגירת תפריט"
+            tabIndex={-1}
+          />
+        )}
         <nav className={menuOpen ? "nav-links open" : "nav-links"} aria-label="ניווט ראשי">
           <button className="icon-btn close-menu" onClick={() => setMenuOpen(false)} aria-label="סגירת תפריט">
             <X size={22} />
           </button>
+          <span className="nav-links-brand">AVNER MESIKA</span>
           {navItems.map(([label, id]) => (
             <button key={id} onClick={() => goTo(id)}>
               {label}
             </button>
           ))}
+          <a className="nav-links-cta" href={telHref}>
+            <Phone size={16} /> {phone}
+          </a>
         </nav>
-        <button className="nav-cta" onClick={() => goTo("appointment")}>
+        <button className="nav-cta" onClick={() => goTo("appointment-form")}>
           לתיאום פגישה
         </button>
       </header>
@@ -316,7 +332,7 @@ function App() {
               <a className="btn primary" href={telHref}>
                 <Phone size={18} /> התקשרו עכשיו
               </a>
-              <button className="btn ghost" onClick={() => goTo("appointment")}>
+              <button className="btn ghost" onClick={() => goTo("appointment-form")}>
                 <CalendarDays size={18} /> לתיאום פגישה אישית
               </button>
             </div>
@@ -519,7 +535,7 @@ function App() {
             <h2>בואו ניצור יחד את התכשיט שתמיד רציתם</h2>
             <p>השאירו פרטים, שלחו הודעה או התקשרו ישירות לאבנר לתיאום פגישה אישית.</p>
           </div>
-          <form className="booking-form" onSubmit={submitAppointment}>
+          <form id="appointment-form" className="booking-form" onSubmit={submitAppointment}>
             <label>
               שם פרטי
               <input name="firstName" required autoComplete="given-name" />
@@ -604,7 +620,7 @@ function App() {
         <a href={whatsappHref}>
           <Send size={18} /> וואטסאפ
         </a>
-        <button onClick={() => goTo("appointment")}>
+        <button onClick={() => goTo("appointment-form")}>
           <CalendarDays size={18} /> פגישה
         </button>
       </nav>

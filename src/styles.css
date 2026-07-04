@@ -126,6 +126,11 @@ img {
   gap: clamp(12px, 2vw, 30px);
 }
 
+.nav-links-brand,
+.nav-links-cta {
+  display: none;
+}
+
 .nav-links button,
 footer button {
   border: 0;
@@ -480,13 +485,23 @@ p {
 }
 
 .service-card {
-  display: grid;
-  min-height: 220px;
-  align-content: end;
+  display: flex;
+  min-height: 240px;
   border: 1px solid var(--outline);
   padding: 26px;
   background: var(--surface);
-  transition: transform 180ms ease, background 180ms ease;
+  box-shadow: 0 1px 2px rgba(56, 47, 36, 0.05);
+  transition: transform 220ms ease, background 220ms ease, box-shadow 220ms ease;
+}
+
+.service-card > div {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.service-card:not(.feature) > div {
+  justify-content: flex-end;
 }
 
 .service-card.feature {
@@ -1229,25 +1244,87 @@ footer p {
     margin-bottom: 20px;
   }
 
+  .nav-backdrop {
+    position: fixed;
+    z-index: 55;
+    inset: 0;
+    border: 0;
+    padding: 0;
+    background: rgba(34, 26, 16, 0.5);
+    backdrop-filter: blur(2px);
+    cursor: pointer;
+    animation: backdropFadeIn 220ms ease;
+  }
+
+  @keyframes backdropFadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
   .nav-links {
     position: fixed;
+    z-index: 56;
     inset: 0 0 0 auto;
-    width: min(360px, 88vw);
+    width: min(340px, 84vw);
     flex-direction: column;
     justify-content: flex-start;
-    padding: 24px;
+    padding: 28px 28px 32px;
     background: var(--surface);
+    box-shadow: -32px 0 64px -24px rgba(56, 47, 36, 0.4);
+    border-left: 1px solid var(--outline);
     transform: translateX(105%);
-    transition: transform 220ms ease;
+    transition: transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .nav-links.open {
     transform: translateX(0);
   }
 
-  .nav-links button {
-    min-height: 48px;
+  .nav-links-brand {
+    display: block;
+    margin: 4px 0 14px;
+    padding-bottom: 18px;
+    color: var(--gold);
+    font-family: "Playfair Display", serif;
+    font-size: 15px;
+    letter-spacing: 0.16em;
     text-align: right;
+    border-bottom: 1px solid var(--outline);
+  }
+
+  .nav-links button {
+    min-height: 52px;
+    padding: 0 4px;
+    color: var(--ink);
+    text-align: right;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    border-bottom: 1px solid rgba(207, 198, 178, 0.5);
+    transition: color 180ms ease, padding-right 180ms ease;
+  }
+
+  .nav-links button:hover {
+    padding-right: 8px;
+    color: var(--gold);
+  }
+
+  .nav-links-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 24px;
+    min-height: 50px;
+    color: var(--white);
+    background: var(--gold);
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    direction: ltr;
   }
 
   .hero,
