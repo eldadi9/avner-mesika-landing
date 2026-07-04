@@ -241,6 +241,24 @@ function App() {
 
   useScrollReveal();
 
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setLightbox((current) => (current !== null ? null : current));
+        setMenuOpen((current) => (current ? false : current));
+        return;
+      }
+      if (event.key === "ArrowRight") {
+        setLightbox((current) => (current === null ? current : (current + gallery.length - 1) % gallery.length));
+      }
+      if (event.key === "ArrowLeft") {
+        setLightbox((current) => (current === null ? current : (current + 1) % gallery.length));
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
   const goTo = (id) => {
     setMenuOpen(false);
     requestAnimationFrame(() => {
@@ -300,7 +318,12 @@ function App() {
           />
         )}
         <nav className={menuOpen ? "nav-links open" : "nav-links"} aria-label="ניווט ראשי">
-          <button className="icon-btn close-menu" onClick={() => setMenuOpen(false)} aria-label="סגירת תפריט">
+          <button
+            className="icon-btn close-menu"
+            onClick={() => setMenuOpen(false)}
+            aria-label="סגירת תפריט"
+            autoFocus={menuOpen}
+          >
             <X size={22} />
           </button>
           <span className="nav-links-brand">AVNER MESIKA</span>
@@ -648,7 +671,7 @@ function App() {
 
       {lightbox !== null && (
         <div className="lightbox" role="dialog" aria-modal="true" aria-label="תמונה מהגלריה">
-          <button className="icon-btn close-lightbox" onClick={() => setLightbox(null)} aria-label="סגירת גלריה">
+          <button className="icon-btn close-lightbox" onClick={() => setLightbox(null)} aria-label="סגירת גלריה" autoFocus>
             <X size={25} />
           </button>
           <button className="light-arrow left" onClick={() => setLightbox((lightbox + gallery.length - 1) % gallery.length)} aria-label="תמונה קודמת">
