@@ -65,9 +65,9 @@ img {
   top: 0;
   left: 0;
   right: 0;
-  height: 76px;
+  height: 92px;
   display: grid;
-  grid-template-columns: 260px 1fr auto;
+  grid-template-columns: 300px 1fr auto;
   align-items: center;
   gap: 24px;
   padding: 0 clamp(18px, 4vw, 56px);
@@ -90,31 +90,31 @@ img {
 }
 
 .monogram {
-  width: 34px;
-  height: 34px;
+  width: 46px;
+  height: 46px;
   display: grid;
   place-items: center;
-  margin-bottom: 8px;
-  border: 1px solid rgba(115, 92, 0, 0.34);
+  margin-bottom: 10px;
+  border: 1px solid rgba(115, 92, 0, 0.42);
   color: var(--gold);
   font-family: "Playfair Display", serif;
-  font-size: 12px;
-  letter-spacing: 0.08em;
+  font-size: 16px;
+  letter-spacing: 0.1em;
 }
 
 .brand-name {
   font-family: "Playfair Display", serif;
-  font-size: 21px;
+  font-size: 27px;
   line-height: 1;
   font-weight: 500;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
 .brand small {
-  margin-top: 4px;
+  margin-top: 6px;
   color: var(--gold);
-  font-size: 9px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: none;
@@ -216,19 +216,31 @@ footer button {
 }
 
 .hero-image {
+  position: relative;
   order: 2;
   width: min(100%, 520px);
   justify-self: start;
-  border: 1px solid rgba(207, 198, 178, 0.7);
+  padding: 14px;
   background: var(--surface-low);
+  box-shadow: 0 32px 64px -28px rgba(56, 47, 36, 0.42);
+}
+
+.hero-image::before {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  z-index: 1;
+  border: 1px solid rgba(212, 175, 55, 0.55);
+  pointer-events: none;
 }
 
 .hero-image img {
+  position: relative;
   width: 100%;
   height: min(76vh, 760px);
   object-fit: cover;
   object-position: top;
-  filter: sepia(0.1) saturate(0.95);
+  filter: sepia(0.06) saturate(1.02);
 }
 
 .hero-content {
@@ -306,6 +318,31 @@ p {
   margin-top: 38px;
 }
 
+.hero-trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 28px;
+  margin: 30px 0 0;
+  padding: 22px 0 0;
+  list-style: none;
+  border-top: 1px solid rgba(115, 92, 0, 0.18);
+}
+
+.hero-trust li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.hero-trust svg {
+  flex-shrink: 0;
+  color: var(--gold);
+}
+
 .scroll-indicator {
   position: absolute;
   bottom: 26px;
@@ -320,6 +357,45 @@ p {
   background: rgba(255, 248, 244, 0.5);
   cursor: pointer;
   transform: translateX(-50%);
+  animation: scrollBounce 2.4s ease-in-out infinite;
+  transition: border-color 180ms ease, background 180ms ease;
+}
+
+.scroll-indicator:hover {
+  border-color: var(--gold);
+  background: rgba(255, 248, 244, 0.82);
+}
+
+@keyframes scrollBounce {
+  0%, 100% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, 8px);
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 720ms ease, transform 720ms ease;
+}
+
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-indicator {
+    animation: none;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 .section {
@@ -1086,6 +1162,11 @@ footer p {
     justify-content: center;
   }
 
+  .hero-trust {
+    justify-content: center;
+    text-align: right;
+  }
+
   .trust-grid,
   .testimonial-grid {
     grid-template-columns: 1fr;
@@ -1107,24 +1188,24 @@ footer p {
 
 @media (max-width: 640px) {
   .site-nav {
-    height: 68px;
+    height: 78px;
     padding: 0 14px;
   }
 
   .brand span {
-    font-size: 15px;
-    letter-spacing: 0.18em;
+    font-size: 19px;
+    letter-spacing: 0.14em;
   }
 
   .brand .monogram {
-    width: 28px;
-    height: 28px;
-    margin-bottom: 5px;
-    font-size: 10px;
+    width: 36px;
+    height: 36px;
+    margin-bottom: 6px;
+    font-size: 13px;
   }
 
   .brand small {
-    font-size: 8px;
+    font-size: 9px;
   }
 
   .nav-cta {
@@ -1134,7 +1215,7 @@ footer p {
   }
 
   .hero {
-    padding: 88px 24px 84px;
+    padding: 92px 24px 84px;
   }
 
   .hero-image img {

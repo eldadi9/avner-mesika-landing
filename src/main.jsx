@@ -208,6 +208,29 @@ function DatePickerField({ name }) {
   );
 }
 
+function useScrollReveal() {
+  useEffect(() => {
+    const targets = document.querySelectorAll(".reveal");
+    if (!("IntersectionObserver" in window) || targets.length === 0) {
+      targets.forEach((el) => el.classList.add("in-view"));
+      return;
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.16, rootMargin: "0px 0px -40px 0px" }
+    );
+    targets.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+}
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [lightbox, setLightbox] = useState(null);
@@ -215,6 +238,8 @@ function App() {
   const [confirmed, setConfirmed] = useState(false);
   const [sending, setSending] = useState(false);
   const [sendError, setSendError] = useState(false);
+
+  useScrollReveal();
 
   const goTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -280,7 +305,7 @@ function App() {
           <div className="hero-image">
             <img src={photos.amberRing} alt="טבעת אבן בעבודת יד של אבנר מסיקה" />
           </div>
-          <div className="hero-content">
+          <div className="hero-content reveal">
             <span className="eyebrow">צורף אומן · עבודת יד · עיצוב אישי · שירות אישי</span>
             <h1>תכשיטים בעבודת יד שנוצרים במיוחד בשבילכם</h1>
             <p>
@@ -296,6 +321,17 @@ function App() {
               </button>
             </div>
             <strong className="phone-line">{phone}</strong>
+            <ul className="hero-trust">
+              <li>
+                <Award size={16} /> מעל 30 שנות ניסיון
+              </li>
+              <li>
+                <Hammer size={16} /> עבודת יד מלאה
+              </li>
+              <li>
+                <HeartHandshake size={16} /> ליווי אישי וישיר
+              </li>
+            </ul>
           </div>
           <button className="scroll-indicator" onClick={() => goTo("about")} aria-label="גלילה לאודות">
             <ArrowDown size={22} />
