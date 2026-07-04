@@ -565,6 +565,7 @@ function App() {
             <button className="btn primary full" type="submit" disabled={sending}>
               <Send size={18} /> {sending ? "שולח..." : "שליחת פנייה"}
             </button>
+            <p className="form-note full">אבנר עונה אישית לכל פנייה, בדרך כלל באותו היום.</p>
             {confirmed && <p className="confirmation">תודה, הפנייה נשלחה בהצלחה. אבנר יחזור אליכם בהקדם.</p>}
             {sendError && (
               <p className="confirmation error">
@@ -578,15 +579,26 @@ function App() {
           <div className="contact-panel">
             <span className="eyebrow">יצירת קשר</span>
             <h2>דברו ישירות עם אבנר.</h2>
+            <p className="contact-lead">
+              בלי מענה אוטומטי ובלי מוקד שירות — כל פנייה מגיעה ישירות לאבנר, והוא זה שעונה.
+            </p>
+            <div className="contact-cta-row">
+              <a className="btn primary" href={telHref}>
+                <Phone size={18} /> התקשרו עכשיו
+              </a>
+              <a className="btn whatsapp" href={whatsappHref}>
+                <Send size={18} /> שלחו הודעת וואטסאפ
+              </a>
+            </div>
             <div className="contact-list">
               <a href={telHref}>
-                <Phone size={21} /> {plainPhone}
+                <Phone size={19} /> {plainPhone}
               </a>
               <a href={`mailto:${email}`}>
-                <Mail size={21} /> {email}
+                <Mail size={19} /> {email}
               </a>
               <span>
-                <MapPin size={21} /> ביקור בסטודיו בתיאום פגישה אישית
+                <MapPin size={19} /> ביקור בסטודיו בתיאום פגישה אישית
               </span>
             </div>
           </div>
@@ -594,6 +606,11 @@ function App() {
             <PenLine size={28} />
             <span>תכשיטים בהתאמה אישית</span>
             <strong>תיקונים · שחזורים · טבעות אירוסין</strong>
+            <ul className="contact-card-trust">
+              <li>מענה אישי תוך זמן קצר</li>
+              <li>ייעוץ ראשוני ללא התחייבות</li>
+              <li>תיאום פגישה בסטודיו או מרחוק</li>
+            </ul>
           </div>
         </section>
       </main>

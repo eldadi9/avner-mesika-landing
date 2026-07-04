@@ -197,6 +197,18 @@ footer button {
   border-color: var(--gold);
 }
 
+.whatsapp {
+  color: #25d366;
+  border-color: rgba(37, 211, 102, 0.4);
+  background: rgba(37, 211, 102, 0.08);
+}
+
+.whatsapp:hover {
+  transform: translateY(-2px);
+  border-color: #25d366;
+  background: rgba(37, 211, 102, 0.14);
+}
+
 .icon-btn {
   display: none;
   width: 44px;
@@ -918,6 +930,7 @@ p {
 
 .booking-form {
   display: grid;
+  width: 100%;
   grid-template-columns: 1fr 1fr;
   gap: 22px;
   padding: clamp(22px, 4vw, 42px);
@@ -946,11 +959,22 @@ textarea {
   background: transparent;
   font-size: 16px;
   outline: 0;
+  transition: border-color 220ms ease, box-shadow 220ms ease;
 }
 
 input:focus,
 textarea:focus {
   border-color: var(--burnished);
+  box-shadow: 0 1px 0 0 var(--burnished);
+}
+
+.form-note {
+  margin-top: -6px;
+  color: rgba(255, 248, 244, 0.55);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: none;
 }
 
 .full {
@@ -1045,10 +1069,24 @@ textarea:focus {
   color: #ff8a80;
 }
 
+.contact-lead {
+  margin-top: 20px;
+  max-width: 460px;
+}
+
+.contact-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 30px;
+}
+
 .contact-list {
   display: grid;
   gap: 16px;
-  margin-top: 32px;
+  margin-top: 36px;
+  padding-top: 30px;
+  border-top: 1px solid var(--outline);
 }
 
 .contact-list a,
@@ -1056,22 +1094,37 @@ textarea:focus {
   display: flex;
   align-items: center;
   gap: 12px;
-  font-size: clamp(18px, 2vw, 25px);
+  font-size: clamp(17px, 1.8vw, 21px);
   font-weight: 700;
+  transition: color 180ms ease;
+}
+
+.contact-list a:hover {
+  color: var(--gold);
 }
 
 .contact-list svg {
+  flex-shrink: 0;
   color: var(--gold);
 }
 
 .contact-card {
+  position: relative;
   min-height: 390px;
   display: grid;
   place-content: center;
   gap: 16px;
-  border: 1px solid var(--outline);
+  padding: 40px;
+  border: 1px solid rgba(212, 175, 55, 0.4);
   text-align: center;
-  background: var(--surface-low);
+  color: var(--surface);
+  background: var(--shadow);
+  box-shadow: 0 32px 64px -30px rgba(56, 47, 36, 0.5);
+}
+
+.contact-card svg {
+  color: var(--burnished);
+  margin-inline: auto;
 }
 
 .contact-card span {
@@ -1080,10 +1133,21 @@ textarea:focus {
 }
 
 .contact-card strong {
-  color: var(--muted);
+  color: var(--burnished);
   font-size: 12px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
+}
+
+.contact-card-trust {
+  display: grid;
+  gap: 10px;
+  margin: 12px 0 0;
+  padding: 20px 0 0;
+  list-style: none;
+  border-top: 1px solid rgba(255, 238, 221, 0.2);
+  color: rgba(255, 248, 244, 0.78);
+  font-size: 13px;
 }
 
 footer {
@@ -1442,9 +1506,19 @@ footer p {
     padding: 72px 24px;
   }
 
+  .appointment {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
   .service-bento,
   .booking-form {
     grid-template-columns: 1fr;
+  }
+
+  .booking-form {
+    gap: 18px;
+    padding: 24px 18px;
   }
 
   .timeline::before {
