@@ -25,6 +25,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -1312,6 +1313,30 @@ footer p {
     grid-template-columns: 46px 1fr auto;
   }
 
+  .mobile-menu {
+    grid-column: 1;
+  }
+
+  .brand {
+    grid-column: 2;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .brand-text {
+    overflow: hidden;
+  }
+
+  .brand-name,
+  .brand small {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .nav-cta {
+    grid-column: 3;
+  }
+
   .mobile-menu,
   .close-menu {
     display: grid;
@@ -1550,6 +1575,26 @@ footer p {
     font-size: 18px;
   }
 
+  .footer-brand {
+    flex-direction: column;
+    max-width: 100%;
+  }
+
+  .footer-brand .brand-text {
+    align-items: center;
+  }
+
+  .footer-brand .brand-name {
+    font-size: 20px;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .footer-brand small {
+    white-space: normal;
+    text-align: center;
+  }
+
   .story-media {
     grid-template-columns: 1fr;
   }
@@ -1573,5 +1618,43 @@ footer p {
   .light-arrow {
     top: auto;
     bottom: 24px;
+  }
+
+  .gallery-section {
+    overflow-x: hidden;
+  }
+
+  .masonry {
+    display: flex;
+    columns: unset;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 14px;
+    width: calc(100% + 48px);
+    margin: 0 -24px;
+    padding: 4px 24px 12px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .masonry::-webkit-scrollbar {
+    display: none;
+  }
+
+  .gallery-item {
+    flex: 0 0 78vw;
+    scroll-snap-align: start;
+    margin: 0;
+  }
+
+  .gallery-item img {
+    min-height: 0;
+    height: 62vw;
+  }
+
+  .item-2 img,
+  .item-5 img,
+  .item-3 img {
+    min-height: 0;
+    height: 62vw;
   }
 }

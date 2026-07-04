@@ -400,7 +400,7 @@ function App() {
         <section className="section trust" id="about">
           <div className="section-heading center">
             <span className="eyebrow">אמנות, ניסיון ותשומת לב אישית</span>
-            <h2>למה לבחור באבנר מסיקה?</h2>
+            <h2>אמנות הצורפות שמאחורי כל תכשיט</h2>
             <p>
               כשיוצרים תכשיט בעבודת יד, כל פרט חשוב. מהרעיון הראשון ועד הגימור האחרון —
               אבנר מלווה אתכם בתהליך אישי, מדויק ומקצועי.
