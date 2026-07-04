@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Avner Mesika | Master Goldsmith</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#8C713B", // Delicate brushed gold
+                    "on-primary": "#ffffff",
+                    "surface": "#FFF9F5", // Warm Ivory
+                    "background": "#FFF9F5",
+                    "on-surface": "#333333", // Warm dark gray
+                    "on-surface-variant": "#555555",
+                    "surface-container-low": "#FEFAF7",
+                    "surface-container": "#F8F1EA", // Soft champagne
+                    "surface-container-high": "#F2E8DF",
+                    "surface-container-highest": "#EBE0D5",
+                    "outline-variant": "#E8DED3",
+                    "primary-container": "#E8C18C",
+                    "on-primary-container": "#4A3B21"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.375rem",
+                    "lg": "1rem",
+                    "xl": "1.5rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "section-padding-desktop": "160px",
+                    "margin-safe": "32px",
+                    "section-padding-mobile": "96px", // Increased padding
+                    "gutter": "24px",
+                    "unit": "8px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Playfair Display"],
+                    "headline-lg": ["Playfair Display"],
+                    "body-md": ["Manrope"],
+                    "display-lg": ["Playfair Display"],
+                    "headline-sm": ["Playfair Display"],
+                    "label-md": ["Manrope"],
+                    "headline-md": ["Playfair Display"],
+                    "body-lg": ["Manrope"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["32px", {"lineHeight": "1.3", "fontWeight": "400"}],
+                    "headline-lg": ["48px", {"lineHeight": "1.2", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.7", "fontWeight": "300"}],
+                    "display-lg": ["56px", {"lineHeight": "1.1", "letterSpacing": "-0.01em", "fontWeight": "400"}],
+                    "headline-sm": ["22px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "label-md": ["13px", {"lineHeight": "1.2", "letterSpacing": "0.15em", "fontWeight": "500"}],
+                    "headline-md": ["28px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.7", "fontWeight": "300"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+        }
+        .text-fill { font-variation-settings: 'FILL' 1; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); opacity: 0.3; }
+            50% { transform: translateY(-8px); opacity: 0.6; }
+            100% { transform: translateY(0px); opacity: 0.3; }
+        }
+        .animate-float { animation: float 5s ease-in-out infinite; }
+        
+        .soft-vignette {
+            box-shadow: inset 0 0 100px rgba(255,249,245,0.4);
+        }
+
+        .fine-line {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #E8DED3, transparent);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-gutter py-4 bg-surface/70 backdrop-blur-lg border-b border-outline-variant/30">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer">menu</span>
+<h1 class="font-headline-md text-[18px] tracking-[0.3em] text-on-surface">AVNER MESIKA</h1>
+</div>
+<button class="bg-primary/10 text-primary border border-primary/20 px-4 py-2 font-label-md text-[10px] tracking-widest hover:bg-primary hover:text-white transition-all duration-500 rounded-full">
+        CONSULTATION
+    </button>
+</header>
+<!-- Hero Section -->
+<section class="relative h-[100dvh] w-full flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="w-full h-full bg-cover bg-center scale-105" data-alt="Close-up of goldsmith hands" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDqEPGzOVDQAUzyvRrKT8H3gkQ9FPshfH2krFJC4eijskL7CpUDUWAGCh2hdXIUwQgGkFcvvXjDjT-atDHqnq8LI3QGki3kO580f27_08bCPHV8IR-NLPMCu6YOo4uohtVeTfkR9wyYFnUEuo2IHww-FaVHXkq7KG6Rf7zzPM8j8as1DlrDNFbmObRkehj_0LEIijktOc8GHTfbAihtZ4cBaDh5L0UhtcOKELzbEiERc1UARYA8asM4JWdaECkBLfXLVuDksKWK838')"></div>
+<div class="absolute inset-0 bg-gradient-to-b from-surface/20 via-surface/10 to-surface/40"></div>
+<div class="absolute inset-0 soft-vignette"></div>
+</div>
+<div class="relative z-10 px-margin-safe text-center">
+<span class="font-label-md text-[11px] text-primary mb-6 block uppercase tracking-[0.4em] opacity-80">Jerusalem Atelier • Since 1992</span>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-6 max-w-sm mx-auto leading-tight italic">The Silent Language of Gold</h2>
+<p class="font-body-lg text-on-surface-variant mb-10 max-w-[280px] mx-auto opacity-90">Bespoke jewelry forged by hand, destined for a lifetime of stories.</p>
+<div class="flex flex-col gap-5 items-center">
+<button class="w-full max-w-[240px] bg-primary text-on-primary py-4 font-label-md text-[11px] tracking-[0.2em] rounded-full shadow-lg shadow-primary/20 hover:translate-y-[-2px] transition-all">
+                START YOUR JOURNEY
+            </button>
+<button class="w-full max-w-[240px] border border-primary/30 text-primary py-4 font-label-md text-[11px] tracking-[0.2em] rounded-full hover:bg-primary/5 transition-all">
+                OUR GALLERY
+            </button>
+</div>
+</div>
+<div class="absolute bottom-16 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-primary/40 animate-float">
+<span class="material-symbols-outlined text-[32px]">keyboard_double_arrow_down</span>
+</div>
+</section>
+<!-- Trust & Experience -->
+<section class="py-section-padding-mobile px-margin-safe bg-surface">
+<div class="mb-16 text-center">
+<h3 class="font-headline-md text-primary mb-4 italic">A Legacy of the Hand</h3>
+<div class="fine-line max-w-[120px] mx-auto"></div>
+</div>
+<div class="grid grid-cols-1 gap-12">
+<div class="text-center group">
+<div class="w-16 h-16 mx-auto mb-6 flex items-center justify-center rounded-full bg-surface-container border border-outline-variant/50 group-hover:bg-primary/10 transition-colors duration-700">
+<span class="material-symbols-outlined text-primary text-3xl">auto_stories</span>
+</div>
+<h4 class="font-headline-sm text-on-surface mb-3">30 Years of Mastery</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed max-w-xs mx-auto">A lifetime dedicated to understanding the nuances of precious metals and the architecture of light in gemstones.</p>
+</div>
+<div class="text-center group">
+<div class="w-16 h-16 mx-auto mb-6 flex items-center justify-center rounded-full bg-surface-container border border-outline-variant/50 group-hover:bg-primary/10 transition-colors duration-700">
+<span class="material-symbols-outlined text-primary text-3xl">draw</span>
+</div>
+<h4 class="font-headline-sm text-on-surface mb-3">Artisanal Soul</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed max-w-xs mx-auto">Rejecting mass production in favor of the workbench, where every hammer strike carries intention and unique character.</p>
+</div>
+<div class="text-center group">
+<div class="w-16 h-16 mx-auto mb-6 flex items-center justify-center rounded-full bg-surface-container border border-outline-variant/50 group-hover:bg-primary/10 transition-colors duration-700">
+<span class="material-symbols-outlined text-primary text-3xl">handshake</span>
+</div>
+<h4 class="font-headline-sm text-on-surface mb-3">Direct Collaboration</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed max-w-xs mx-auto">You speak directly with the master who will forge your piece, ensuring your vision is never lost in translation.</p>
+</div>
+</div>
+</section>
+<!-- Services Bento -->
+<section class="py-section-padding-mobile px-margin-safe bg-surface-container-low">
+<div class="text-center mb-16">
+<span class="font-label-md text-[10px] text-primary tracking-[0.3em] uppercase block mb-2">Our Expertise</span>
+<h3 class="font-headline-md text-on-surface italic">A Workshop of Possibilities</h3>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="col-span-2 aspect-[4/3] relative rounded-lg overflow-hidden group">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-1000 group-hover:scale-105" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAmz4_UDtiDIEvmSc9Zkfkony8b4lPR9lwS9v7f1V8An80uEo2R_-SeSOlOD1YPniVjACeObimzd_ba4g6jKb5vCaMEyVUbepSQPMtWRXXVN3x9-vezMYneH2uEAFMP1s-GD_l5F8Og16dUIOeArMShxgruL4ymZGQprlLh2qUaCzweqaNG-OG-awB00tEo0sKJMeSn0Pfy5vJ2zuLv13BGeZVrPG3FDuPk-k2UlgYJ--KdmOxg2YhBAOtbyhUZs_jihhrQkG2cxn4')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface/90 via-surface/20 to-transparent p-6 flex flex-col justify-end">
+<h5 class="text-on-surface font-headline-sm mb-1">Custom Creations</h5>
+<p class="text-on-surface-variant text-xs italic">Transforming dreams into wearable heirlooms.</p>
+</div>
+</div>
+<div class="aspect-square bg-surface border border-outline-variant/30 rounded-lg flex flex-col items-center justify-center text-center p-4">
+<span class="material-symbols-outlined text-primary/60 text-2xl mb-3">diamond</span>
+<span class="font-label-md text-[10px] uppercase tracking-widest text-on-surface">Engagement</span>
+</div>
+<div class="aspect-square bg-surface border border-outline-variant/30 rounded-lg flex flex-col items-center justify-center text-center p-4">
+<span class="material-symbols-outlined text-primary/60 text-2xl mb-3">favorite</span>
+<span class="font-label-md text-[10px] uppercase tracking-widest text-on-surface">Wedding</span>
+</div>
+<div class="aspect-square bg-surface border border-outline-variant/30 rounded-lg flex flex-col items-center justify-center text-center p-4">
+<span class="material-symbols-outlined text-primary/60 text-2xl mb-3">healing</span>
+<span class="font-label-md text-[10px] uppercase tracking-widest text-on-surface">Repairs</span>
+</div>
+<div class="aspect-square bg-surface border border-outline-variant/30 rounded-lg flex flex-col items-center justify-center text-center p-4">
+<span class="material-symbols-outlined text-primary/60 text-2xl mb-3">auto_awesome</span>
+<span class="font-label-md text-[10px] uppercase tracking-widest text-on-surface">Upgrades</span>
+</div>
+</div>
+</section>
+<!-- Philosophy -->
+<section class="relative py-32 overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="w-full h-full bg-cover bg-center parallax-bg brightness-[0.4]" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDyqbu7NOFXzY-5KVmIM0XLuuaHIwVwV9uQjzoPhRIIr6pILEl91uJ1OLhPAbZlHUf89-43VIQo1f5wODK-Wjh_kHvSV_e383kU8bvy0VVp0PZ1ZGXZH4vNBWo63Q7YPH6abHOo6zmF9Hy_D90LUBd0YKLVDDs6HXXSTYGxHVEGXc83vOnk_1gjYvcN3hRcAiFmvZbqHcte8eIzErCXI0i4fhNVMkb7pj0XYGJd6tKHHvHPzLc1iuLjkRJk6bPAOpfswm3qksP8VlM')"></div>
+</div>
+<div class="relative z-10 px-margin-safe text-center">
+<h3 class="font-headline-lg-mobile text-surface italic mb-8">Philosophy of Gold</h3>
+<p class="font-body-lg text-surface/80 max-w-sm mx-auto italic leading-relaxed mb-12">
+            "In a world of fast fashion, the mark of the hand is the ultimate luxury. Every imperfection is a signature; every curve is an intention born of silence and fire."
+        </p>
+<div class="fine-line max-w-[60px] mx-auto mb-6 opacity-40"></div>
+<p class="text-primary text-[11px] font-label-md tracking-[0.4em]">- AVNER MESIKA</p>
+</div>
+</section>
+<!-- Engagement Rings Story -->
+<section class="py-section-padding-mobile px-margin-safe bg-surface">
+<div class="flex flex-col gap-12">
+<div class="text-center">
+<span class="font-label-md text-[10px] text-primary tracking-[0.3em] uppercase block mb-4">The Custom Journey</span>
+<h3 class="font-headline-md text-on-surface italic leading-snug">Crafting Your Eternal Symbol</h3>
+</div>
+<div class="relative rounded-2xl overflow-hidden shadow-2xl shadow-primary/5">
+<img class="w-full aspect-[4/5] object-cover" data-alt="Diamond ring" src="https://lh3.googleusercontent.com/aida-public/AB6AXuClaf2NkniPmDLoodfRupPCWOmdNTrMU5eUGhV1wDmg9TpcaIXdfbB4aRw-PKt5_mVFeLqPrSXt2mLQhNWpR_bLuvxnMPHwWIdM0LsAlX0st1RYBjzcsnaxcr6GdKH_Y3yd5DOW4bdzI8CdGAGRzzMwEMd1EpUeaV2gfz6zKcTXhd63VpkStCOYiZPpJYDHt3MNh9-7PXmLhDSw28vEMLZm0PWmlUYv2q2OcvoPKZWVxFhMhBzno-mlXMeBBWwpKwOzG6D42UcTqfg"/>
+<div class="absolute inset-0 soft-vignette opacity-60"></div>
+</div>
+<div class="text-center px-4">
+<p class="text-on-surface-variant font-body-md italic leading-relaxed mb-8">
+                An engagement ring is more than jewelry; it is an architectural translation of emotion. We guide you through the selection of rare stones to the final polish of the forge.
+            </p>
+<button class="text-primary font-label-md text-[11px] tracking-[0.3em] border-b border-primary/40 pb-2 hover:border-primary transition-all">
+                REQUEST A SKETCH
+            </button>
+</div>
+</div>
+</section>
+<!-- Process Timeline -->
+<section class="py-section-padding-mobile px-margin-safe bg-surface-container">
+<h3 class="font-headline-md text-on-surface text-center italic mb-16">The Maker's Path</h3>
+<div class="relative space-y-16">
+<!-- Step 1 -->
+<div class="flex flex-col items-center text-center relative z-10">
+<div class="w-12 h-12 bg-surface rounded-full flex items-center justify-center border border-primary/20 text-primary font-headline-sm mb-4">I</div>
+<h5 class="font-label-md text-[11px] text-primary uppercase tracking-widest mb-2">The Dialogue</h5>
+<p class="text-on-surface-variant text-sm max-w-[240px]">An intimate consultation to explore your story, aesthetic, and expectations.</p>
+</div>
+<!-- Step 2 -->
+<div class="flex flex-col items-center text-center relative z-10">
+<div class="w-12 h-12 bg-surface rounded-full flex items-center justify-center border border-primary/20 text-primary font-headline-sm mb-4">II</div>
+<h5 class="font-label-md text-[11px] text-primary uppercase tracking-widest mb-2">The Concept</h5>
+<p class="text-on-surface-variant text-sm max-w-[240px]">Hand-drawn sketches and the curation of ethically sourced diamonds or gems.</p>
+</div>
+<!-- Step 3 -->
+<div class="flex flex-col items-center text-center relative z-10">
+<div class="w-12 h-12 bg-surface rounded-full flex items-center justify-center border border-primary/20 text-primary font-headline-sm mb-4">III</div>
+<h5 class="font-label-md text-[11px] text-primary uppercase tracking-widest mb-2">The Forge</h5>
+<p class="text-on-surface-variant text-sm max-w-[240px]">The physical birth of the piece at the workbench using ancient and modern tools.</p>
+</div>
+<!-- Step 4 -->
+<div class="flex flex-col items-center text-center relative z-10">
+<div class="w-12 h-12 bg-surface rounded-full flex items-center justify-center border border-primary/20 text-primary font-headline-sm mb-4">IV</div>
+<h5 class="font-label-md text-[11px] text-primary uppercase tracking-widest mb-2">The Reveal</h5>
+<p class="text-on-surface-variant text-sm max-w-[240px]">Final inspection and the presentation of a masterpiece built for generations.</p>
+</div>
+</div>
+</section>
+<!-- Restoration -->
+<section class="py-section-padding-mobile px-margin-safe bg-surface">
+<div class="mb-12 text-center">
+<h3 class="font-headline-md text-on-surface italic mb-4">Honoring History</h3>
+<p class="text-on-surface-variant text-sm italic">Restoring family treasures with a master's touch.</p>
+</div>
+<div class="relative rounded-lg overflow-hidden group border border-outline-variant/30 shadow-xl shadow-primary/5">
+<img class="w-full aspect-video object-cover" data-alt="Restoration comparison" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJAAooDQR6q9rCboSzAvii1EjyeBkQmW3TiRvbuxiP7eYr9kkbUu83K3RE4pmmfb56P-UUk2rzUiXJQ2C6-xePse-6vm3L7mRYMgE9_usGw7anEMnRfrhh1rxAKgn1YyrZtDpNTFt02ShZYv2614rC4doWuDkSCuIrXqpH1domSs02X6oKLUErzh6ks3Jp_F762fcCGoOO_OwHYw6v_C5jvKrRVmxELIa_yh9jCv1O8tOuFKf2m0h8AtVBs4au8wslXwjdMjojIg8"/>
+<div class="absolute top-4 left-4 bg-surface/90 px-3 py-1 text-[9px] uppercase tracking-widest text-on-surface-variant">Legacy</div>
+<div class="absolute top-4 right-4 bg-primary/90 px-3 py-1 text-[9px] uppercase tracking-widest text-white">Revival</div>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="py-section-padding-mobile px-margin-safe bg-surface-container-high">
+<h3 class="font-headline-md text-on-surface italic mb-12 text-center">In Their Words</h3>
+<div class="flex overflow-x-auto gap-6 no-scrollbar pb-12 snap-x">
+<div class="min-w-[85vw] snap-center bg-surface p-10 rounded-2xl shadow-sm border border-outline-variant/20">
+<div class="flex gap-1 text-primary/40 mb-6">
+<span class="material-symbols-outlined text-fill text-sm">star</span>
+<span class="material-symbols-outlined text-fill text-sm">star</span>
+<span class="material-symbols-outlined text-fill text-sm">star</span>
+<span class="material-symbols-outlined text-fill text-sm">star</span>
+<span class="material-symbols-outlined text-fill text-sm">star</span>
+</div>
+<p class="text-on-surface italic mb-8 leading-relaxed">"Avner's work is not just jewelry, it's poetry in metal. He took my grandmother's diamonds and created something that feels both ancient and modern."</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full border border-primary/20 overflow-hidden">
+<img class="w-full h-full object-cover grayscale opacity-80" data-alt="Client portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0WEuaN_7pPToHenGPrzdU9OlLD4ahcjIi5gyIbmglPytJc60PidDBHm8kjRjzFWtNi0APtj0-Klylw-AQx6R2C31fIMzNY1JDSd-Al9DfPff1vWi6pp_BJrwkfLS1EMh797lqYsttkPib-Zj9XSTIsf31_hQ_3Rh2CgcWpuMBkiT4dhyPd789d11PY7pt-vKBZyy0toWm6HM0D3xkSuF6zpp11WzO3-orjbzsk4NKGBVYfFmLSwatbA8n_oKgJffMCcriW2SwPHc"/>
+</div>
+<div>
+<span class="block font-label-md text-[11px] text-on-surface">Miriam L.</span>
+<span class="block text-[9px] text-on-surface-variant uppercase tracking-widest opacity-60">Custom Design</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Form -->
+<section class="py-section-padding-mobile px-margin-safe bg-surface" id="contact">
+<div class="text-center mb-16">
+<span class="font-label-md text-[10px] text-primary tracking-[0.3em] uppercase block mb-4">Personal Consultation</span>
+<h3 class="font-headline-md text-on-surface italic">Begin the Dialogue</h3>
+</div>
+<form class="space-y-10">
+<div class="relative">
+<input class="w-full border-0 border-b border-outline-variant focus:border-primary focus:ring-0 bg-transparent py-4 text-on-surface placeholder:text-on-surface-variant/40" placeholder="NAME" type="text"/>
+</div>
+<div class="relative">
+<input class="w-full border-0 border-b border-outline-variant focus:border-primary focus:ring-0 bg-transparent py-4 text-on-surface placeholder:text-on-surface-variant/40" placeholder="EMAIL" type="email"/>
+</div>
+<div class="relative">
+<textarea class="w-full border-0 border-b border-outline-variant focus:border-primary focus:ring-0 bg-transparent py-4 text-on-surface placeholder:text-on-surface-variant/40" placeholder="SHARE YOUR VISION" rows="3"></textarea>
+</div>
+<button class="w-full bg-primary text-on-primary py-5 font-label-md text-[11px] tracking-[0.3em] rounded-full shadow-lg shadow-primary/20" type="submit">
+            SEND INQUIRY
+        </button>
+</form>
+<div class="mt-20 space-y-4">
+<div class="flex items-center gap-6 p-6 bg-surface-container/30 rounded-xl border border-outline-variant/20">
+<span class="material-symbols-outlined text-primary">history_edu</span>
+<div class="fine-line w-[1px] h-8 bg-outline-variant"></div>
+<div>
+<span class="block font-label-md text-[9px] uppercase tracking-widest text-on-surface-variant mb-1">Direct Atelier</span>
+<span class="font-headline-sm text-sm tracking-widest text-on-surface">+1 (555) 0123 4567</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full px-margin-safe py-section-padding-mobile flex flex-col items-center text-center bg-surface-container-highest/30 border-t border-outline-variant/30">
+<h2 class="font-headline-sm text-on-surface tracking-[0.4em] mb-4 text-[16px]">AVNER MESIKA</h2>
+<span class="font-label-md text-[10px] text-primary mb-12 tracking-[0.2em] uppercase">Master Goldsmith • Jerusalem</span>
+<div class="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-12">
+<a class="text-on-surface-variant font-label-md text-[10px] tracking-widest hover:text-primary transition-colors" href="#">CREATIONS</a>
+<a class="text-on-surface-variant font-label-md text-[10px] tracking-widest hover:text-primary transition-colors" href="#">RESTORE</a>
+<a class="text-on-surface-variant font-label-md text-[10px] tracking-widest hover:text-primary transition-colors" href="#">ATELIER</a>
+</div>
+<div class="flex gap-8 mb-12 opacity-60">
+<span class="material-symbols-outlined text-on-surface-variant text-xl cursor-pointer">ink_pen</span>
+<span class="material-symbols-outlined text-on-surface-variant text-xl cursor-pointer">camera</span>
+<span class="material-symbols-outlined text-on-surface-variant text-xl cursor-pointer">mail</span>
+</div>
+<p class="font-label-md text-[9px] text-on-surface-variant/50 uppercase tracking-[0.3em] leading-relaxed">
+        © 2024 AVNER MESIKA.<br/>ALL PIECES REGISTERED &amp; HANDCRAFTED.
+    </p>
+</footer>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] z-50 flex h-14 bg-on-surface/90 backdrop-blur-md rounded-full shadow-2xl items-center px-2 overflow-hidden border border-white/10">
+<a class="flex-1 flex items-center justify-center gap-3 text-surface h-full hover:bg-white/5 transition-colors border-r border-white/10" href="tel:+123456789">
+<span class="material-symbols-outlined text-fill text-sm">call</span>
+<span class="font-label-md text-[9px] uppercase tracking-widest">CALL</span>
+</a>
+<a class="flex-1 flex items-center justify-center gap-3 text-surface h-full hover:bg-white/5 transition-colors" href="https://wa.me/123456789">
+<span class="material-symbols-outlined text-sm">chat</span>
+<span class="font-label-md text-[9px] uppercase tracking-widest">WHATSAPP</span>
+</a>
+</nav>
+<script>
+    // Reveal effect on scroll
+    const observerOptions = { threshold: 0.1 };
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('opacity-100', 'translate-y-0');
+                entry.target.classList.remove('opacity-0', 'translate-y-4');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('section > div').forEach(el => {
+        el.classList.add('transition-all', 'duration-[1.5s]', 'opacity-0', 'translate-y-4');
+        observer.observe(el);
+    });
+
+    // Header transparency adjust
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        if (window.scrollY > 100) {
+            header.classList.add('bg-surface/90');
+        } else {
+            header.classList.remove('bg-surface/90');
+        }
+    });
+</script>
+</body></html>
