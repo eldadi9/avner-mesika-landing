@@ -286,8 +286,10 @@ function App() {
         </button>
         <button className="brand" onClick={() => goTo("top")} aria-label="AVNER MESIKA עמוד הבית">
           <span className="monogram">AM</span>
-          <span className="brand-name">AVNER MESIKA</span>
-          <small>Jewelry Artist · Handcrafted Fine Jewelry</small>
+          <span className="brand-text">
+            <span className="brand-name">AVNER MESIKA</span>
+            <small>Jewelry Artist · Handcrafted Fine Jewelry</small>
+          </span>
         </button>
         {menuOpen && (
           <button
@@ -599,8 +601,10 @@ function App() {
       <footer>
         <div className="brand footer-brand">
           <span className="monogram">AM</span>
-          <span className="brand-name">AVNER MESIKA</span>
-          <small>Jewelry Artist · Handcrafted Fine Jewelry</small>
+          <span className="brand-text">
+            <span className="brand-name">AVNER MESIKA</span>
+            <small>Jewelry Artist · Handcrafted Fine Jewelry</small>
+          </span>
         </div>
         <div className="footer-contact">
           <a href={telHref}>{plainPhone}</a>
