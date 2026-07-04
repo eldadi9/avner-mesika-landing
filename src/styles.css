@@ -202,15 +202,15 @@ footer button {
 }
 
 .whatsapp {
-  color: #25d366;
-  border-color: rgba(37, 211, 102, 0.4);
-  background: rgba(37, 211, 102, 0.08);
+  color: var(--gold);
+  border-color: rgba(115, 92, 0, 0.32);
+  background: rgba(255, 248, 244, 0.62);
 }
 
 .whatsapp:hover {
   transform: translateY(-2px);
-  border-color: #25d366;
-  background: rgba(37, 211, 102, 0.14);
+  border-color: var(--gold);
+  background: rgba(255, 248, 244, 0.9);
 }
 
 .icon-btn {
@@ -1084,6 +1084,10 @@ textarea:focus {
   flex-wrap: wrap;
   gap: 14px;
   margin-top: 30px;
+}
+
+.contact-cta-row .btn {
+  flex: 1 1 200px;
 }
 
 .contact-list {
