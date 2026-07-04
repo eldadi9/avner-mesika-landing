@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import {
   ArrowDown,
@@ -26,6 +26,8 @@ const email = "avnerm62@gmail.com";
 const telHref = "tel:+972523644377";
 const whatsappHref =
   "https://wa.me/972523644377?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%90%D7%91%D7%A0%D7%A8%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%94%D7%AA%D7%99%D7%99%D7%A2%D7%A5%20%D7%9C%D7%92%D7%91%D7%99%20%D7%AA%D7%9B%D7%A9%D7%99%D7%98%20%D7%91%D7%94%D7%AA%D7%90%D7%9E%D7%94%20%D7%90%D7%99%D7%A9%D7%99%D7%AA.";
+
+const appointmentWebhookUrl = "https://n8n.srv1282987.hstgr.cloud/webhook/avner-appointment";
 
 const asset = (name) => `/assets/${name}`;
 
@@ -102,21 +104,149 @@ const testimonials = [
   },
 ];
 
+const weekdayLabels = ["א", "ב", "ג", "ד", "ה", "ו", "ש"];
+const monthLabels = [
+  "ינואר", "פברואר", "מרץ", "אפריל", "מאי", "יוני",
+  "יולי", "אוגוסט", "ספטמבר", "אוקטובר", "נובמבר", "דצמבר",
+];
+
+const pad2 = (value) => String(value).padStart(2, "0");
+const formatDateDMY = (date) => `${pad2(date.getDate())}/${pad2(date.getMonth() + 1)}/${date.getFullYear()}`;
+const toISODate = (date) => `${date.getFullYear()}-${pad2(date.getMonth() + 1)}-${pad2(date.getDate())}`;
+
+function DatePickerField({ name }) {
+  const [open, setOpen] = useState(false);
+  const [selected, setSelected] = useState(null);
+  const [viewDate, setViewDate] = useState(() => new Date());
+  const wrapperRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const year = viewDate.getFullYear();
+  const month = viewDate.getMonth();
+  const firstDay = new Date(year, month, 1);
+  const startOffset = (firstDay.getDay() + 1) % 7;
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const cells = [];
+  for (let i = 0; i < startOffset; i += 1) cells.push(null);
+  for (let day = 1; day <= daysInMonth; day += 1) cells.push(day);
+
+  const changeMonth = (delta) => {
+    setViewDate(new Date(year, month + delta, 1));
+  };
+
+  const pickDay = (day) => {
+    const picked = new Date(year, month, day);
+    if (picked < today) return;
+    setSelected(picked);
+    setOpen(false);
+  };
+
+  return (
+    <div className="date-field" ref={wrapperRef}>
+      <input
+        type="text"
+        readOnly
+        placeholder="DD/MM/YYYY"
+        value={selected ? formatDateDMY(selected) : ""}
+        onClick={() => setOpen((value) => !value)}
+      />
+      <input type="hidden" name={name} value={selected ? toISODate(selected) : ""} />
+      {open && (
+        <div className="date-popover" role="dialog" aria-label="בחירת תאריך">
+          <div className="date-popover-head">
+            <button type="button" onClick={() => changeMonth(1)} aria-label="חודש הבא">
+              <ChevronRight size={18} />
+            </button>
+            <strong>{monthLabels[month]} {year}</strong>
+            <button type="button" onClick={() => changeMonth(-1)} aria-label="חודש קודם">
+              <ChevronLeft size={18} />
+            </button>
+          </div>
+          <div className="date-popover-weekdays">
+            {weekdayLabels.map((label) => (
+              <span key={label}>{label}</span>
+            ))}
+          </div>
+          <div className="date-popover-grid">
+            {cells.map((day, index) => {
+              if (day === null) return <span key={`empty-${index}`} />;
+              const cellDate = new Date(year, month, day);
+              const isPast = cellDate < today;
+              const isSelected =
+                selected &&
+                selected.getFullYear() === year &&
+                selected.getMonth() === month &&
+                selected.getDate() === day;
+              return (
+                <button
+                  type="button"
+                  key={day}
+                  className={isSelected ? "selected" : ""}
+                  disabled={isPast}
+                  onClick={() => pickDay(day)}
+                >
+                  {day}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [lightbox, setLightbox] = useState(null);
   const [slider, setSlider] = useState(50);
   const [confirmed, setConfirmed] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState(false);
 
   const goTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     setMenuOpen(false);
   };
 
-  const submitAppointment = (event) => {
+  const submitAppointment = async (event) => {
     event.preventDefault();
-    setConfirmed(true);
-    event.currentTarget.reset();
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    setSending(true);
+    setSendError(false);
+    try {
+      const response = await fetch(appointmentWebhookUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.get("name"),
+          phone: data.get("phone"),
+          email: data.get("email"),
+          date: data.get("date"),
+          message: data.get("message"),
+        }),
+      });
+      if (!response.ok) throw new Error("Request failed");
+      setConfirmed(true);
+      form.reset();
+    } catch (error) {
+      setSendError(true);
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -355,16 +485,21 @@ function App() {
             </label>
             <label>
               תאריך מועדף לפגישה
-              <input name="date" type="date" />
+              <DatePickerField name="date" />
             </label>
             <label className="full">
               איך אפשר לעזור?
               <textarea name="message" rows="3" />
             </label>
-            <button className="btn primary full" type="submit">
-              <Send size={18} /> שליחת פנייה
+            <button className="btn primary full" type="submit" disabled={sending}>
+              <Send size={18} /> {sending ? "שולח..." : "שליחת פנייה"}
             </button>
             {confirmed && <p className="confirmation">תודה, הפנייה נשלחה בהצלחה. אבנר יחזור אליכם בהקדם.</p>}
+            {sendError && (
+              <p className="confirmation error">
+                אירעה שגיאה בשליחה. אפשר להתקשר או לשלוח הודעת וואטסאפ ישירות לאבנר.
+              </p>
+            )}
           </form>
         </section>
 
